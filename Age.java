@@ -1,36 +1,26 @@
 import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 public class Age {
     public static void main(String[] args) {
 
 
-        Scanner input = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         // Ask the user for their birth year, month, and day
 
 
-        System.out.print("Enter your birth year (e.g. 2000): ");
+        System.out.print("Enter your birthdate (yyyy-MM-dd): ");
 
-        int year = input.nextInt();
+         String input = scanner.nextLine();
 
-
-        System.out.print("Enter your birth month (1-12): ");
-
-
-        int month = input.nextInt();
-
-
-        System.out.print("Enter your birth day (1-31): ");
-
-        int day = input.nextInt();
-
+         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         // Create birthdate
 
-
-        LocalDate birthDate = LocalDate.of(year, month, day);
+        LocalDate birthDate = LocalDate.parse(input, formatter);
 
 
         // Get today's date
@@ -45,10 +35,10 @@ public class Age {
 
         // Show the age
 
-        System.out.println("You age is " + age.getYears() + " years, " + age.getMonths() + " months and " + age.getDays() + " days" );
+        System.out.println("your age is: " + age.getYears() + " years, " + age.getMonths() + " months, and " + age.getDays() + " days.");
 
 
 
-        input.close();
+        scanner.close();
     }
 }
